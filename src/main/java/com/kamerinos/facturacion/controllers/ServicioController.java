@@ -3,14 +3,15 @@ package com.kamerinos.facturacion.controllers;
 import com.kamerinos.facturacion.models.Servicio;
 import com.kamerinos.facturacion.services.servicios.CategoriaService;
 import com.kamerinos.facturacion.services.servicios.ServicioService;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @Controller
+
 @RequestMapping("/servicios")
 public class ServicioController {
 
@@ -27,15 +28,14 @@ public class ServicioController {
         List<Servicio> servicios = servicioService.listarServicios();
         model.addAttribute("servicios", servicios);
         model.addAttribute("titulo", "Servicios");
-        model.addAttribute("contenido", "servicios/lista");   // Inyecta el fragmento
-        return "layout"; // Se renderiza el layout
+        model.addAttribute("contenido", "servicios/lista");
+        return "layout";
     }
-    
+
     @GetMapping("/nuevo")
     public String mostrarFormularioNuevoServicio(Model model) {
         model.addAttribute("servicio", new Servicio());
-        model.addAttribute("categorias", categoriaService.listarCategorias()
-        );
+        model.addAttribute("categorias", categoriaService.listarCategorias());
         return "servicios/formulario";
     }
 
@@ -50,8 +50,7 @@ public class ServicioController {
         Servicio servicio = servicioService.obtenerServicioPorId(id)
                 .orElseThrow(() -> new IllegalArgumentException("ID de servicio inválido: " + id));
         model.addAttribute("servicio", servicio);
-        model.addAttribute("categorias", categoriaService.listarCategorias()
-        );
+        model.addAttribute("categorias", categoriaService.listarCategorias());
         return "servicios/formulario";
     }
 
