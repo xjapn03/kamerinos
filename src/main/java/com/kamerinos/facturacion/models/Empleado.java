@@ -1,11 +1,16 @@
 package com.kamerinos.facturacion.models;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 @Table(name = "empleados")
-public class Empleado {
+public class Empleado implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +33,6 @@ public class Empleado {
     @JoinColumn(name = "rol_id")
     private Rol rol; // Relación hacia el rol del empleado
 
-    // ====== Métodos automáticos de fecha ======
 
     @PrePersist
     protected void onCreate() {
@@ -40,6 +44,42 @@ public class Empleado {
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
+
+
+    @Override
+    public String getUsername() {
+        return this.correo; // Usamos el correo como username
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (rol == null) {
+            return Collections.emptyList();
+        }
+        return Collections.singleton(() -> rol.getNombreRol());
+    }
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 
     // ====== Getters y Setters ======
 
