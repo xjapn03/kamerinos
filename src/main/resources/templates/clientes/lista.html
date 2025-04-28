@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}">Lista de Clientes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Clientes</h1>
+
+    <div class="mb-4">
+        <a href="/clientes/nuevo" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+            + Nuevo Cliente
+        </a>
+    </div>
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="pb-4 bg-white dark:bg-gray-900">
+            <label for="table-search" class="sr-only">Buscar</label>
+            <div class="relative mt-1">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </div>
+                <input type="text" id="table-search" class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Buscar clientes...">
+            </div>
+        </div>
+
+        <!-- Contenedor para la tabla responsiva -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Nombre Completo</th>
+                        <th scope="col" class="px-6 py-3">Documento</th>
+                        <th scope="col" class="px-6 py-3">Edad</th>
+                        <th scope="col" class="px-6 py-3">Email</th>
+                        <th scope="col" class="px-6 py-3">Celular</th>
+                        <th scope="col" class="px-6 py-3">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cliente : ${clientes}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" th:text="${cliente.nombre} + ' ' + ${cliente.apellido}">
+                            Nombre
+                        </th>
+                        <td class="px-6 py-4" th:text="${cliente.numeroDocumento}">Documento</td>
+                        <!-- Usamos el método getEdad() para mostrar la edad calculada -->
+                        <td class="px-6 py-4" th:text="${cliente.edad}">Edad</td>
+                        <td class="px-6 py-4" th:text="${cliente.email}">Email</td>
+                        <td class="px-6 py-4" th:text="${cliente.celular}">Celular</td>
+                        <td class="px-6 py-4">
+                            <div class="flex space-x-2">
+                                <a th:href="@{'/clientes/editar/' + ${cliente.id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                                <a th:href="@{'/clientes/eliminar/' + ${cliente.id}}" class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('¿Seguro que quieres eliminar este cliente?')">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="/js/clientes.js"></script>
+
+</body>
+</html>
