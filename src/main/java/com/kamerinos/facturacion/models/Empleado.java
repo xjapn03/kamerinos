@@ -56,8 +56,9 @@ public class Empleado implements UserDetails {
         if (rol == null) {
             return Collections.emptyList();
         }
-        return Collections.singleton(() -> rol.getNombreRol());
+        return Collections.singleton(() -> "ROLE_" + rol.getNombreRol());
     }
+
 
 
     @Override
