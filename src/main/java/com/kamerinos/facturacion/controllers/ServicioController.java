@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @Controller
-
 @RequestMapping("/servicios")
 public class ServicioController {
 
@@ -36,7 +34,9 @@ public class ServicioController {
     public String mostrarFormularioNuevoServicio(Model model) {
         model.addAttribute("servicio", new Servicio());
         model.addAttribute("categorias", categoriaService.listarCategorias());
-        return "servicios/formulario";
+        model.addAttribute("titulo", "Nuevo Servicio");
+        model.addAttribute("contenido", "servicios/formulario");
+        return "layout";
     }
 
     @PostMapping("/guardar")
@@ -51,7 +51,9 @@ public class ServicioController {
                 .orElseThrow(() -> new IllegalArgumentException("ID de servicio inválido: " + id));
         model.addAttribute("servicio", servicio);
         model.addAttribute("categorias", categoriaService.listarCategorias());
-        return "servicios/formulario";
+        model.addAttribute("titulo", "Editar Servicio");
+        model.addAttribute("contenido", "servicios/formulario");
+        return "layout";
     }
 
     @GetMapping("/eliminar/{id}")

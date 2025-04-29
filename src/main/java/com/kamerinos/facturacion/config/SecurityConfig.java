@@ -26,7 +26,7 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    .requestMatchers("/login", "/register", "/resources/**", "/static/**").permitAll() // Permitir login, registro, recursos estáticos
+                    .requestMatchers("/login", "/register", "/resources/**", "/assets/**", "/static/**").permitAll() // Permitir login, registro, recursos estáticos
                     .requestMatchers("/admin/**").hasRole("ADMIN") // Solo admin puede entrar a /admin/**
                     .requestMatchers("/empleado/**").hasRole("EMPLEADO") // Solo empleados pueden acceder a /empleado/**
                     .anyRequest().authenticated() // Lo demás requiere login
