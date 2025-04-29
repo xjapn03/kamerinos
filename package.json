@@ -3,17 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind": "tailwindcss build src/main/resources/static/assets/css/tailwind.css -o src/main/resources/static/assets/css/tailwind.output.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3"
+    "postcss": "^8.5.3",
+    "tailwindcss-multi-theme": "^1.0.4"
   },
   "devDependencies": {
-    "tailwindcss": "^4.1.4"
+    "tailwindcss": "^1.4.6"
   }
 }
