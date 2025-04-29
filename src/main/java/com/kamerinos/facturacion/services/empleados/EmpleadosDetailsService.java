@@ -1,6 +1,5 @@
 package com.kamerinos.facturacion.services.empleados;
 
-import com.kamerinos.facturacion.models.Empleado;
 import com.kamerinos.facturacion.repositories.EmpleadoRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
