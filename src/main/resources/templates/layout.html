@@ -21,6 +21,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
       defer
     ></script>
+    <!-- Antes de cerrar body -->
     <script src="/assets/js/charts-lines.js" defer></script>
     <script src="/assets/js/charts-pie.js" defer></script>
 
@@ -162,7 +163,7 @@
             <li class="relative px-6 py-3">
               <a
                 class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="#"
+                href="/citas"
               >
                 <svg
                   class="w-5 h-5"
@@ -821,6 +822,20 @@
       </div>
     </div>
     
+
+    <!-- Scripts de FullCalendar -->
+    <script src="/assets/fullcalendar/core.global.min.js"></script>
+    <script src="/assets/fullcalendar/daygrid.global.min.js"></script>
+    <script src="/assets/fullcalendar/interaction.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/rrule@2.6.8/dist/es5/rrule.min.js"></script>
+    <script src="/assets/fullcalendar/rrule.global.min.js"></script> <!-- Solo si tienes eventos recurrentes -->
+    <script src="/assets/fullcalendar/list.global.min.js"></script> <!-- Solo si necesitas la vista lista -->
+    <script src="/assets/fullcalendar/google.global.min.js"></script> <!-- Si usas Google Calendar -->
+    <script src="/assets/fullcalendar/bootstrap5.global.min.js"></script> <!-- Si usas Bootstrap 5 -->
+    <script src="/assets/fullcalendar/es.global.min.js"></script> <!-- Para idioma español -->
+
+    <!-- Script para inicializar el calendario -->
+    <script src="/assets/js/calendar.js"></script> <!-- Tu archivo JS personalizado -->
 
   </body>
 </html>

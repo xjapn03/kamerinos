@@ -3,24 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${titulo}">Inicio</title>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth', // Vista inicial del mes
-                events: '/api/reservas', // Ruta para obtener las citas
-                selectable: true, // Permite seleccionar fechas
-                editable: true, // Permite mover eventos
-                eventClick: function(info) {
-                    // Aquí puedes agregar lógica para editar o eliminar la cita
-                    alert('Cita seleccionada: ' + info.event.title);
-                }
-            });
-            calendar.render();
-        });
-    </script>
+    
 </head>
 <body class="bg-gray-50">
 
@@ -30,8 +13,6 @@
         <p class="text-lg text-gray-700 mb-4">Aquí puedes administrar clientes, productos y ventas de forma fácil y eficiente. El sistema está diseñado para ayudarte a gestionar todas las operaciones de manera rápida y sencilla.</p>
         <p class="text-lg text-gray-700">Explora las secciones de <strong>Clientes</strong>, <strong>Ventas</strong> y <strong>Servicios</strong> desde el menú de navegación para comenzar a utilizar el sistema.</p>
         
-        <!-- Calendario de Reservas -->
-        <div id="calendar" class="my-8"></div>
     </div>
 
 
