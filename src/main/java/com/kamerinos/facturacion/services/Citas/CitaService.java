@@ -10,4 +10,7 @@ public interface CitaService {
     Optional<Cita> obtenerCitaPorId(Long id);
     Cita guardarCita(Cita cita);
     void eliminarCita(Long id);
+
+    // Nuevo método para soporte de drag & drop
+    Cita actualizarHorarioCita(Long id, String inicioStr, String finStr);
 }

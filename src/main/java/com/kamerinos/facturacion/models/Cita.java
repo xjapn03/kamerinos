@@ -11,19 +11,25 @@ public class Cita {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String clienteNombre;
-    private String servicio;
     private String nota;
     private LocalDateTime inicio;
     private LocalDateTime fin;
+
+    private String estado; // pendiente, confirmado, cancelado
 
     @ManyToOne
     @JoinColumn(name = "empleado_id")
     private Empleado empleado;
 
-    private String estado; // pendiente, confirmado, cancelado
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
-    // Getters y setters
+    @ManyToOne
+    @JoinColumn(name = "servicio_id")
+    private Servicio servicio;
+
+    // Getters y Setters...
 
     public Long getId() {
         return id;
@@ -33,19 +39,11 @@ public class Cita {
         this.id = id;
     }
 
-    public String getClienteNombre() {
-        return clienteNombre;
-    }
-
-    public void setClienteNombre(String clienteNombre) {
-        this.clienteNombre = clienteNombre;
-    }
-
-    public String getServicio() {
+    public Servicio getServicio() {
         return servicio;
     }
 
-    public void setServicio(String servicio) {
+    public void setServicio(Servicio servicio) {
         this.servicio = servicio;
     }
 
@@ -71,6 +69,14 @@ public class Cita {
 
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getEstado() {
